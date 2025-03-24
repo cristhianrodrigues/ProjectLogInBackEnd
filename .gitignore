@@ -1,0 +1,63 @@
+# ----------------------
+# Dependências
+# ----------------------
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.pnpm-debug.log
+
+# ----------------------
+# Ambiente
+# ----------------------
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# ----------------------
+# Logs
+# ----------------------
+*.log
+logs/
+*.pid
+
+# ----------------------
+# Diretórios de build/compilação
+# ----------------------
+dist/
+build/
+out/
+coverage/
+.nyc_output/
+
+# ----------------------
+# IDEs e Editores
+# ----------------------
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ----------------------
+# Sistema operacional
+# ----------------------
+.DS_Store
+Thumbs.db
+
+# ----------------------
+# Testes
+# ----------------------
+/junit.xml
+
+# ----------------------
+# Miscelânea
+# ----------------------
+*.tmp
+*.bak
+.cache/
+dump.rdb
