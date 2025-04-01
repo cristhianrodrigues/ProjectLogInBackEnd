@@ -1,4 +1,5 @@
 import { supabase } from "../data/supabaseClient.js";
+import validator from "validator";
 
 export const registrarUsuario = async (req, res) => {
     try {
@@ -12,6 +13,30 @@ export const registrarUsuario = async (req, res) => {
             return res.status(400).json({ 
                 error: "Todos os campos são obrigatórios: email, password, nome" 
             });
+        };
+
+        if (!validator.isEmail(email)){
+            return res.status(403).json({
+                success: false,
+                error: "Formato do Email inválido!"
+            })
+        }
+
+        const { data: jaCadastrado, error: checkError } = await supabase
+            .from('users')
+            .select('email')
+            .eq('email', email)
+            .maybeSingle();
+        
+        if (checkError) {
+            throw checkError;
+        };
+
+        if (jaCadastrado) {
+            return res.status(403).json({
+                success: false,
+                error: "Email já cadastrado!"
+            })
         };
 
         const { data: authData, error: authError } = await supabase.auth.signUp({
